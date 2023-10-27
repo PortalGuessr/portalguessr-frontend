@@ -8,7 +8,7 @@ const Setting = () => {
   const [modifiersChecked, setModifiersChecked] = useState(
     JSON.parse(
       localStorage.getItem("MODIFIERS") ||
-        "{ blur: false, rotate: false, grayscale: false }"
+        '{ "blur": false, "rotate": false, "grayscale": false }'
     )
   );
 
