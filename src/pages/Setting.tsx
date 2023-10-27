@@ -15,7 +15,7 @@ const Setting = () => {
   const { blur, grayscale, rotate } = modifiersChecked;
 
   function handleClearClick() {
-    const doStatsExist = localStorage.getItem("USER_STATS");
+    const doStatsExist = localStorage.getItem("USER_STATS") ? true : false;
 
     if (!doStatsExist) {
       alert(
@@ -62,7 +62,7 @@ const Setting = () => {
             />
             <Form.Check
               type="switch"
-              label="Keep image blur"
+              label="Blurred image"
               onChange={(e) =>
                 setModifiersChecked({
                   ...modifiersChecked,
@@ -73,7 +73,7 @@ const Setting = () => {
             />
             <Form.Check
               type="switch"
-              label="Rotate image 180 degree"
+              label="Invert image upside down"
               onChange={(e) =>
                 setModifiersChecked({
                   ...modifiersChecked,
