@@ -1,0 +1,45 @@
+// Functions and variables.
+@import "../../node_modules/bootstrap/scss/_functions.scss";
+@import "../../node_modules/bootstrap/scss/_variables.scss";
+
+// Fonts.
+@import url("https://fonts.googleapis.com/css2?family=Martian+Mono&family=Poppins&display=swap");
+
+$font-family-base: "Poppins", sans-serif;
+$font-family-code: "Martian Mono", monospace;
+
+// Colors.
+$pg-light: #f3e6eb;
+$pg-dark: #080205;
+$pg-primary: #c43636;
+$pg-secondary: #36cbd3;
+$pg-accent: #3264ff;
+$pg-danger: #ff5733;
+$pg-success: #4caf50;
+$pg-warning: #fedc56;
+$pg-info: #00a6d6;
+
+$pg-custom-theme: (
+  "pg-primary": $pg-primary,
+  "pg-secondary": $pg-secondary,
+  "pg-accent": $pg-accent,
+  "pg-light": $pg-light,
+  "pg-dark": $pg-dark,
+  "pg-warning": $pg-warning,
+  "pg-success": $pg-success,
+  "pg-danger": $pg-danger,
+);
+
+$theme-colors: map-merge($pg-custom-theme, $theme-colors);
+
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+
+// Headings.
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Martian Mono", monospace;
+}

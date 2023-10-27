@@ -1,0 +1,20 @@
+.card-pg {
+  cursor: pointer;
+  width: 14rem;
+}
+
+@keyframes animate {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-8px);
+  }
+}
+
+.card-pg:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 0 32px -8px #080205;
+  animation-name: animate;
+  animation-duration: 0.25s;
+}

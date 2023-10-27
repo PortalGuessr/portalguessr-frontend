@@ -1,0 +1,7 @@
+.rotate {
+  transform: rotate(180deg);
+}
+
+.grayscale {
+  filter: grayscale(100%);
+}
