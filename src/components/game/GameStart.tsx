@@ -5,8 +5,8 @@ import { GuessrContext } from "../../../types/utiltypes/GuessrContextType";
 import { convertToAbbreviate } from "../../utils/convertToAbbreviate";
 import { GuessrDifficulty } from "../../../types/utiltypes/GuessrGameTypes";
 
-// ! Endpoint only for development, do not use for production!
-const DEVELOPMENT_URL = "http://localhost:5000/chambers/random";
+const PORTALGUESSR_API_ENDPOINT =
+  "https://portalguessr-api.cyclic.app/chambers/random";
 
 const GameStart = () => {
   const { setCurrentQuestion, setQuestions, resetCounter, setIsGameRunning } =
@@ -19,7 +19,7 @@ const GameStart = () => {
   ) {
     const difficultyAbbreviate = convertToAbbreviate(difficulty);
     // Goofy workaround but it works!
-    const endpoint = `${DEVELOPMENT_URL}/${
+    const endpoint = `${PORTALGUESSR_API_ENDPOINT}/${
       amount + (difficultyAbbreviate !== null ? `/${difficultyAbbreviate}` : "")
     }`;
 
