@@ -13,7 +13,7 @@ export function useGameStates() {
   // Current question and its index in the array.
   const [currentQuestion, setCurrentQuestion] = useState({} as GuessrQuestion);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-
+  
   // Several flags for the game's state.
   const [isGameRunning, setIsGameRunning] = useState(false);
   const [isGameFinished, setIsGameFinished] = useState(false);

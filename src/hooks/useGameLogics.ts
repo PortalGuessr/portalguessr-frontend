@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { PortalChamberNumber } from "../../types/utiltypes/GuessrGameTypes";
 import { GameLogicsHookParam } from "../../types/hooktypes/GameFunctionsHookParam";
 
@@ -16,11 +16,36 @@ export function useGameLogics({
   setIsGameFinishedBeforeTimerRunOut,
   resetCounter,
 }: GameLogicsHookParam) {
+  const [imageCooldown, setImageCooldown] = useState(false);
+
   useEffect(() => {
     if (isCounterFinished && hasCounterInitialized) {
       handleCounterFinished();
     }
   }, [isCounterFinished]);
+
+  const imageSrc = currentQuestion.url;
+
+  useEffect(() => {
+    // Check whether the blur modifier is active or not.
+    // If it does active, we don't need to wait for the image to load.
+    const { blur } = JSON.parse(
+      localStorage.getItem("MODIFIERS") ||
+        '{ "blur": false, "rotate": false, "grayscale": false }'
+    );
+
+    if (blur) {
+      setImageCooldown(false);
+    } else {
+      const img = new Image();
+
+      img.onload = () => {
+        setImageCooldown(false);
+      };
+
+      img.src = imageSrc;
+    }
+  }, [imageSrc]);
 
   function handleCounterFinished() {
     // Triggered when the counter reaches 0 AND the counter has been initialized.
@@ -31,6 +56,11 @@ export function useGameLogics({
   }
 
   function handleAnswer(chamber: PortalChamberNumber) {
+    if (imageCooldown) {
+      alert("Image is still loading! Please wait a moment.");
+      return;
+    }
+
     // Handling user answer (when the user clicked the answer button).
     // Here we save the result to history, then show the next question if available.
     const historyId = crypto.randomUUID();
@@ -39,6 +69,8 @@ export function useGameLogics({
 
     writeHistory(isUserAnswerCorrect, historyId, userAnswer);
     showNextQuestion(isUserAnswerCorrect);
+
+    setImageCooldown(true);
   }
 
   function writeHistory(
