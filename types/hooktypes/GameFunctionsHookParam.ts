@@ -1,17 +1,18 @@
 import { GuessrQuestion, GuessrHistory } from "../utiltypes/GuessrGameTypes";
 
-export interface GameFunctionsHookParam {
+export interface GameLogicsHookParam {
   questions: GuessrQuestion[];
   history: GuessrHistory[];
-  setHistory: React.Dispatch<React.SetStateAction<GuessrHistory[]>>;
   currentQuestion: GuessrQuestion;
   currentQuestionIndex: number;
-  setCurrentQuestion: React.Dispatch<React.SetStateAction<GuessrQuestion>>;
-  setCurrentQuestionIndex: React.Dispatch<React.SetStateAction<number>>;
-  setIsGameFinished: React.Dispatch<React.SetStateAction<boolean>>;
   isCounterFinished: boolean;
   hasCounterInitialized: boolean;
+  setCurrentQuestion: React.Dispatch<React.SetStateAction<GuessrQuestion>>;
+  setCurrentQuestionIndex: React.Dispatch<React.SetStateAction<number>>;
+  setHistory: React.Dispatch<React.SetStateAction<GuessrHistory[]>>;
+  setIsGameFinished: React.Dispatch<React.SetStateAction<boolean>>;
   setIsGameFinishedBeforeTimerRunOut: React.Dispatch<
     React.SetStateAction<boolean>
   >;
+  resetCounter: (newSeconds: number) => void;
 }

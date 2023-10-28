@@ -49,6 +49,7 @@ const App = () => {
     setHistory,
     setIsGameFinished,
     setIsGameFinishedBeforeTimerRunOut,
+    resetCounter,
   });
 
   return (

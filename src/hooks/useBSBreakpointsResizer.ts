@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { BSBreakpointsResizerHookParams } from "../../types/hooktypes/BSBreakpointsResizerHookParam";
+import { BSBreakpointsResizerHookParam } from "../../types/hooktypes/BSBreakpointsResizerHookParam";
 
 export function useBSBreakpointsResizer({
   lg,
@@ -10,7 +10,7 @@ export function useBSBreakpointsResizer({
   xxl,
   initialHeight,
   initialWidth,
-}: BSBreakpointsResizerHookParams) {
+}: BSBreakpointsResizerHookParam) {
   const [xsWidth, xsHeight] = xs;
   const [smWidth, smHeight] = sm;
   const [mdWidth, mdHeight] = md;

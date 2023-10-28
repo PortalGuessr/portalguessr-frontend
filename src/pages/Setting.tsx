@@ -62,7 +62,7 @@ const Setting = () => {
             />
             <Form.Check
               type="switch"
-              label="Blurred image"
+              label="Keep image blurred"
               onChange={(e) =>
                 setModifiersChecked({
                   ...modifiersChecked,

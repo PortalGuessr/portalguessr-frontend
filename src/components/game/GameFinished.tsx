@@ -16,7 +16,6 @@ const GameFinished = () => {
     setHistory,
     setCurrentQuestion,
     setCurrentQuestionIndex,
-    resetCounter,
   } = useContext(GuessrContext);
 
   const [correctCount, incorrectCount] = getCorrectAndIncorrectCount(history);
@@ -28,7 +27,6 @@ const GameFinished = () => {
     setCurrentQuestionIndex(0);
     setIsGameFinished(false);
     setIsGameRunning(false);
-    resetCounter(0);
   }
 
   return (

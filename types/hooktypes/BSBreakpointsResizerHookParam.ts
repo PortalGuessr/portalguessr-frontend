@@ -1,4 +1,4 @@
-export interface BSBreakpointsResizerHookParams {
+export interface BSBreakpointsResizerHookParam {
   initialWidth: number;
   initialHeight: number;
   xs: [number, number];

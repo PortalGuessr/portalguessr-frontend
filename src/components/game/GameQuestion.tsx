@@ -8,10 +8,11 @@ import { GuessrQuestion } from "../../../types/utiltypes/GuessrGameTypes";
 import { GuessrHistory } from "../../../types/utiltypes/GuessrGameTypes";
 
 const GameQuestion = () => {
-  const { blur, grayscale, rotate } = JSON.parse(
+  const modifiers = JSON.parse(
     localStorage.getItem("MODIFIERS") ||
-      "{ blur: false, rotate: false, grayscale: false }"
+      '{ "blur": false, "rotate": false, "grayscale": false }'
   );
+  const { blur, grayscale, rotate } = modifiers;
 
   const {
     currentQuestion,
@@ -96,6 +97,16 @@ const GameQuestion = () => {
             {difficulty}
           </span>
         </div>
+        {
+          // If any of the modifiers is true, display the div.
+          (blur || grayscale || rotate) === true ? (
+            <div className="mt-4 d-flex justify-content-center align-items-center gap-2">
+              {blur ? <span>🔞 Blurred</span> : null}
+              {grayscale ? <span>⚫ Grayscale</span> : null}
+              {rotate ? <span>🔄 Inverted</span> : null}
+            </div>
+          ) : null
+        }
       </section>
     </>
   );

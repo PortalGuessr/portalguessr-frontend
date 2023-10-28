@@ -18,10 +18,10 @@ const GameStart = () => {
     amount: number
   ) {
     const difficultyAbbreviate = convertToAbbreviate(difficulty);
-    // Goofy workaround but it works!
     const endpoint = `${PORTALGUESSR_API_ENDPOINT}/${
       amount + (difficultyAbbreviate !== null ? `/${difficultyAbbreviate}` : "")
     }`;
+    // Goofy workaround but it works!
 
     async function fetchQuestions() {
       try {
