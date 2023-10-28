@@ -27,6 +27,7 @@ const App = () => {
     isGameFinishedBeforeTimerRunOut,
     isGameRunning,
     questions,
+    isFetchingData,
     resetCounter,
     setCurrentQuestion,
     setCurrentQuestionIndex,
@@ -35,6 +36,7 @@ const App = () => {
     setIsGameFinishedBeforeTimerRunOut,
     setIsGameRunning,
     setQuestions,
+    setIsFetchingData,
   } = useGameStates();
 
   const handleAnswer = useGameLogics({
@@ -70,6 +72,7 @@ const App = () => {
                   questions,
                   isGameFinished,
                   isGameRunning,
+                  isFetchingData,
                   resetCounter,
                   setCurrentQuestion,
                   setCurrentQuestionIndex,
@@ -78,6 +81,7 @@ const App = () => {
                   setQuestions,
                   setHistory,
                   handleAnswer,
+                  setIsFetchingData,
                 }}
               >
                 <Game />

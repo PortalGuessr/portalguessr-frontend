@@ -13,7 +13,10 @@ export function useGameStates() {
   // Current question and its index in the array.
   const [currentQuestion, setCurrentQuestion] = useState({} as GuessrQuestion);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  
+
+  // Flag for data fetching.
+  const [isFetchingData, setIsFetchingData] = useState(false);
+
   // Several flags for the game's state.
   const [isGameRunning, setIsGameRunning] = useState(false);
   const [isGameFinished, setIsGameFinished] = useState(false);
@@ -35,6 +38,7 @@ export function useGameStates() {
     isCounterFinished,
     hasCounterInitialized,
     isGameFinishedBeforeTimerRunOut,
+    isFetchingData,
     resetCounter,
     setQuestions,
     setHistory,
@@ -43,6 +47,7 @@ export function useGameStates() {
     setIsGameRunning,
     setIsGameFinished,
     setIsGameFinishedBeforeTimerRunOut,
+    setIsFetchingData,
   };
 
   return states;

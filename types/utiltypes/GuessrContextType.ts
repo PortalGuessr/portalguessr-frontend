@@ -14,6 +14,7 @@ export interface GuessrContextType {
   isGameFinishedBeforeTimerRunOut: boolean;
   isGameFinished: boolean;
   isGameRunning: boolean;
+  isFetchingData: boolean;
   setQuestions: React.Dispatch<React.SetStateAction<GuessrQuestion[]>>;
   setCurrentQuestion: React.Dispatch<React.SetStateAction<GuessrQuestion>>;
   setCurrentQuestionIndex: React.Dispatch<React.SetStateAction<number>>;
@@ -22,6 +23,7 @@ export interface GuessrContextType {
   setHistory: React.Dispatch<React.SetStateAction<GuessrHistory[]>>;
   handleAnswer: (chamber: PortalChamberNumber) => void;
   resetCounter: (newSeconds: number) => void;
+  setIsFetchingData: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const GuessrContext = createContext({} as GuessrContextType);

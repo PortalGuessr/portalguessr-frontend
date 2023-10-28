@@ -9,8 +9,13 @@ const PORTALGUESSR_API_ENDPOINT =
   "https://portalguessr-api.cyclic.app/chambers/random";
 
 const GameStart = () => {
-  const { setCurrentQuestion, setQuestions, resetCounter, setIsGameRunning } =
-    useContext(GuessrContext);
+  const {
+    setCurrentQuestion,
+    setQuestions,
+    resetCounter,
+    setIsGameRunning,
+    setIsFetchingData,
+  } = useContext(GuessrContext);
 
   function handleGameStart(
     difficulty: GuessrDifficulty,
@@ -31,6 +36,7 @@ const GameStart = () => {
         setQuestions(questions);
         setCurrentQuestion(questions[0]);
         resetCounter(timeoutSeconds);
+        setIsFetchingData(false);
         setIsGameRunning(true);
       } catch (error) {
         alert(`An error occurred: ${error}`);
