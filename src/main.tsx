@@ -2,7 +2,7 @@
 ================================================================================
 Copyright (c) 2023 XnonXte
 This project is released under MIT License.
-GitHub repo: https://github.com/XnonXte/PortalGuessr-FullStack
+GitHub repo: https://github.com/PortalGuessr/PortalGuessr-Frontend
 ================================================================================
 */
 

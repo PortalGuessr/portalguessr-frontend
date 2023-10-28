@@ -27,7 +27,7 @@ const MainFooter = () => {
       <div>
         <a
           target="_blank"
-          href="https://github.com/XnonXte/PortalGuessr-FullStack/issues"
+          href="https://github.com/PortalGuessr/PortalGuessr-Frontend/issues"
           className="link link-pg-light"
           style={{ fontSize: "0.625rem" }}
         >

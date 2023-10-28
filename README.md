@@ -1,7 +1,7 @@
 # PortalGuessr Frontend
 
 <div align="center">
-  <a href="https://github.com/XnonXte/PortalGuessr"
+  <a href="https://github.com/PortalGuessr/PortalGuessr-Frontend"
     ><img src="./mockup.png" alt="PortalGuessr mockup"
   /></a>
 </div>
