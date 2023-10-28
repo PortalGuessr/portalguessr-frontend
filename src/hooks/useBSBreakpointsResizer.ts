@@ -26,8 +26,6 @@ export function useBSBreakpointsResizer({
   useEffect(() => {
     function handleResize() {
       setWindowSize({ width: window.innerWidth, height: window.innerHeight });
-      console.log(window.innerWidth);
-      console.log(window.innerHeight);
     }
 
     window.addEventListener("resize", handleResize);
