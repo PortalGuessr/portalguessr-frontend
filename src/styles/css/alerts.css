@@ -1,0 +1,28 @@
+.temporary-alert {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  z-index: 999;
+  opacity: 0;
+  transform: translateY(12px);
+  animation: slide-down-alert 0.5s;
+}
+
+.temporary-alert.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+@keyframes slide-down-alert {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(12px);
+  }
+}
