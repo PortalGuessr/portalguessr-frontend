@@ -31,16 +31,12 @@ const StartingCards = ({ handleGameStart }: StartingCardsProps) => {
           number
         ];
         const randomId = crypto.randomUUID();
-
         return (
           <Col key={randomId}>
             <Card
               className={`mx-auto card-pg bg-pg-dark bg-pg-light border-3 border-pg-dark`}
               onClick={() => {
                 if (isFetchingData) {
-                  alert(
-                    "Still fetching data from server! Please wait a moment..."
-                  );
                   return;
                 }
                 handleGameStart(difficulty, counter, rounds);
