@@ -15,6 +15,7 @@ export function useGameLogics({
   setIsGameFinished,
   setIsGameFinishedBeforeTimerRunOut,
   resetCounter,
+  showAlert,
 }: GameLogicsHookParam) {
   const [imageCooldown, setImageCooldown] = useState(false);
 
@@ -57,7 +58,11 @@ export function useGameLogics({
 
   function handleAnswer(chamber: PortalChamberNumber) {
     if (imageCooldown) {
-      alert("Image is still loading! Please wait a moment.");
+      showAlert(
+        "Still loading image! You can't answer before the image load.",
+        "danger",
+        2000
+      );
       return;
     }
 

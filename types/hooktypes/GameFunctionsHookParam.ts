@@ -15,4 +15,17 @@ export interface GameLogicsHookParam {
     React.SetStateAction<boolean>
   >;
   resetCounter: (newSeconds: number) => void;
+  showAlert: (
+    message: string,
+    variant:
+      | "primary"
+      | "secondary"
+      | "success"
+      | "danger"
+      | "warning"
+      | "info"
+      | "light"
+      | "dark",
+    duration: number
+  ) => void;
 }

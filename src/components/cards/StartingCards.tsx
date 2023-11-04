@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { GuessrContext } from "../../../types/utiltypes/GuessrContextType";
+import { AlertContext } from "../../../types/utiltypes/AlertContextType";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
@@ -12,6 +13,8 @@ import { DIFFICULTY_CARDS } from "./_StartingCards";
 
 const StartingCards = ({ handleGameStart }: StartingCardsProps) => {
   const { isFetchingData, setIsFetchingData } = useContext(GuessrContext);
+
+  const { showAlert } = useContext(AlertContext);
 
   return (
     <Row className="m-auto gap-2 gap-xxl-0">
@@ -37,6 +40,11 @@ const StartingCards = ({ handleGameStart }: StartingCardsProps) => {
               className={`mx-auto card-pg bg-pg-dark bg-pg-light border-3 border-pg-dark`}
               onClick={() => {
                 if (isFetchingData) {
+                  showAlert(
+                    "Still fetching data from server! Please wait before starting another game.",
+                    "danger",
+                    2000
+                  );
                   return;
                 }
                 handleGameStart(difficulty, counter, rounds);

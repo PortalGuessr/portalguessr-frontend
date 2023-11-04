@@ -1,0 +1,23 @@
+.temporary-alert {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  z-index: 99;
+  transform: translateY(16px);
+  animation: alert-slide 0.5s;
+}
+
+@keyframes alert-slide {
+  from {
+    opacity: 0;
+    transform: translateY(0px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(16px);
+  }
+}

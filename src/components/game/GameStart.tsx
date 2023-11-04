@@ -2,6 +2,7 @@ import { useContext } from "react";
 import axios from "axios";
 import StartingCards from "../cards/StartingCards";
 import { GuessrContext } from "../../../types/utiltypes/GuessrContextType";
+import { AlertContext } from "../../../types/utiltypes/AlertContextType";
 import { convertToAbbreviate } from "../../utils/convertToAbbreviate";
 import { GuessrDifficulty } from "../../../types/utiltypes/GuessrGameTypes";
 
@@ -16,6 +17,8 @@ const GameStart = () => {
     setIsGameRunning,
     setIsFetchingData,
   } = useContext(GuessrContext);
+
+  const { showAlert } = useContext(AlertContext);
 
   function handleGameStart(
     difficulty: GuessrDifficulty,
@@ -39,7 +42,7 @@ const GameStart = () => {
         setIsFetchingData(false);
         setIsGameRunning(true);
       } catch (error) {
-        alert(`An error occurred: ${error}`);
+        showAlert(`An error occurred: ${error}`, "danger", 2000);
       }
     }
 

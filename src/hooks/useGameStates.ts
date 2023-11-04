@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, ReactNode } from "react";
 import { useTimeoutTimer } from "./useTimeoutTimer";
 import {
   GuessrQuestion,
@@ -27,6 +27,9 @@ export function useGameStates() {
   const { counter, isCounterFinished, hasCounterInitialized, resetCounter } =
     useTimeoutTimer(0);
 
+  // Alerts.
+  const [alert, setAlert] = useState(null as ReactNode);
+
   const states = {
     counter,
     questions,
@@ -39,6 +42,7 @@ export function useGameStates() {
     hasCounterInitialized,
     isGameFinishedBeforeTimerRunOut,
     isFetchingData,
+    alert,
     resetCounter,
     setQuestions,
     setHistory,
@@ -48,6 +52,7 @@ export function useGameStates() {
     setIsGameFinished,
     setIsGameFinishedBeforeTimerRunOut,
     setIsFetchingData,
+    setAlert,
   };
 
   return states;

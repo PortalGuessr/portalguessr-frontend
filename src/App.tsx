@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import { Route, Routes } from "react-router-dom";
 import { useGameStates } from "./hooks/useGameStates";
 import { useGameLogics } from "./hooks/useGameLogics";
@@ -12,10 +13,35 @@ import BottomFooter from "./components/footers/BottomFooter";
 import MainFooter from "./components/footers/MainFooter";
 import Version from "./components/footers/Version";
 import Navbar from "./components/navigation/Navbar";
+import TemporaryAlert from "./components/alerts/TemporaryAlert";
 import "./styles/css/App.css";
 import { GuessrContext } from "../types/utiltypes/GuessrContextType";
+import { AlertContext } from "../types/utiltypes/AlertContextType";
 
 const App = () => {
+  function showAlert(
+    message: string,
+    variant:
+      | "primary"
+      | "secondary"
+      | "success"
+      | "danger"
+      | "warning"
+      | "info"
+      | "light"
+      | "dark",
+    duration: number
+  ) {
+    setAlert(
+      <TemporaryAlert
+        duration={duration}
+        message={message}
+        variant={variant}
+        onClose={() => setAlert(null as ReactNode)}
+      />
+    );
+  }
+
   const {
     counter,
     currentQuestion,
@@ -28,6 +54,7 @@ const App = () => {
     isGameRunning,
     questions,
     isFetchingData,
+    alert,
     resetCounter,
     setCurrentQuestion,
     setCurrentQuestionIndex,
@@ -37,6 +64,7 @@ const App = () => {
     setIsGameRunning,
     setQuestions,
     setIsFetchingData,
+    setAlert,
   } = useGameStates();
 
   const handleAnswer = useGameLogics({
@@ -52,51 +80,55 @@ const App = () => {
     setIsGameFinished,
     setIsGameFinishedBeforeTimerRunOut,
     resetCounter,
+    showAlert,
   });
 
   return (
     <main className="text-pg-light">
+      {alert}
       <Container>
-        <Navbar />
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <GuessrContext.Provider
-                value={{
-                  counter,
-                  currentQuestion,
-                  currentQuestionIndex,
-                  history,
-                  isGameFinishedBeforeTimerRunOut,
-                  questions,
-                  isGameFinished,
-                  isGameRunning,
-                  isFetchingData,
-                  resetCounter,
-                  setCurrentQuestion,
-                  setCurrentQuestionIndex,
-                  setIsGameFinished,
-                  setIsGameRunning,
-                  setQuestions,
-                  setHistory,
-                  handleAnswer,
-                  setIsFetchingData,
-                }}
-              >
-                <Game />
-              </GuessrContext.Provider>
-            }
-          />
-          <Route path="/user" element={<User />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/stats" element={<Stats />} />
-          <Route path="/setting" element={<Setting />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-        <BottomFooter />
-        <MainFooter />
-        <Version />
+        <AlertContext.Provider value={{ showAlert }}>
+          <Navbar />
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <GuessrContext.Provider
+                  value={{
+                    counter,
+                    currentQuestion,
+                    currentQuestionIndex,
+                    history,
+                    isGameFinishedBeforeTimerRunOut,
+                    questions,
+                    isGameFinished,
+                    isGameRunning,
+                    isFetchingData,
+                    resetCounter,
+                    setCurrentQuestion,
+                    setCurrentQuestionIndex,
+                    setIsGameFinished,
+                    setIsGameRunning,
+                    setQuestions,
+                    setHistory,
+                    handleAnswer,
+                    setIsFetchingData,
+                  }}
+                >
+                  <Game />
+                </GuessrContext.Provider>
+              }
+            />
+            <Route path="/user" element={<User />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/stats" element={<Stats />} />
+            <Route path="/setting" element={<Setting />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+          <BottomFooter />
+          <MainFooter />
+          <Version />
+        </AlertContext.Provider>
       </Container>
     </main>
   );

@@ -1,10 +1,12 @@
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { AlertContext } from "../../types/utiltypes/AlertContextType";
 import { Link } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
 const Setting = () => {
+  const { showAlert } = useContext(AlertContext);
+
   const [modifiersChecked, setModifiersChecked] = useState(
     JSON.parse(
       localStorage.getItem("MODIFIERS") ||
@@ -18,19 +20,16 @@ const Setting = () => {
     const doStatsExist = localStorage.getItem("USER_STATS") ? true : false;
 
     if (!doStatsExist) {
-      alert(
-        "Stats not detected. You might have cleared them already or they don't exist!"
+      showAlert(
+        "User stats not detected! Either you have cleared them previously or they don't exist yet.",
+        "danger",
+        2000
       );
       return;
     }
 
-    const isConfirmed = confirm(
-      "Are you sure to delete user stats? This is irreversible!"
-    );
-
-    if (isConfirmed) {
-      localStorage.removeItem("USER_STATS");
-    }
+    localStorage.removeItem("USER_STATS");
+    showAlert("User stats have been cleared!", "success", 2000);
   }
 
   useEffect(() => {
@@ -47,6 +46,7 @@ const Setting = () => {
         <div className="mb-4">
           <hr />
           <h6>📳 Difficulty Modifiers</h6>
+          <p>These modifiers change how the image would appear in your game.</p>
           <Form>
             <Form.Check
               type="switch"
@@ -87,14 +87,15 @@ const Setting = () => {
         </div>
         <div className="mb-4">
           <hr />
-
           <h6 className="text-pg-danger">⛔ Danger Section!</h6>
+          <p>WARNING: This action is irreversible!</p>
+
           <Button
             variant="pg-danger"
             className="text-white"
             onClick={handleClearClick}
           >
-            Clear current statistics
+            Clear Statistics
           </Button>
           <hr />
         </div>

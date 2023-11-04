@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Alert from "react-bootstrap/Alert";
-import "../../styles/css/alerts.css";
+import "../../styles/css/temporary-alert.css";
 
 function TemporaryAlert({
   message,
@@ -21,11 +21,11 @@ function TemporaryAlert({
   duration: number;
   onClose: () => void;
 }) {
-  const [showAlert, setShowAlert] = useState(true);
+  const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setShowAlert(false);
+      setIsVisible(false);
       onClose();
     }, duration);
 
@@ -33,8 +33,8 @@ function TemporaryAlert({
   }, [duration, onClose]);
 
   return (
-    <div className={`temporary-alert ${showAlert ? "show" : ""}`}>
-      <Alert show={showAlert} variant={variant}>
+    <div className="temporary-alert">
+      <Alert show={isVisible} variant={variant}>
         {message}
       </Alert>
     </div>
