@@ -47,7 +47,7 @@ const GameStart = () => {
         resetCounter(timeoutSeconds);
         setIsGameRunning(true);
       } catch (error) {
-        showAlert(`An error occurred: ${error}`, "danger", 2000);
+        showAlert(`An error occurred: ${error}`, "danger", 3000);
       } finally {
         isFetching = false;
       }

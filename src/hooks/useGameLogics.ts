@@ -61,7 +61,7 @@ export function useGameLogics({
       showAlert(
         "Image is still loading! You can't answer before the image load.",
         "danger",
-        2000
+        3000
       );
       return;
     }
@@ -71,6 +71,16 @@ export function useGameLogics({
     const historyId = crypto.randomUUID();
     const isUserAnswerCorrect = chamber === currentQuestion.answer;
     const userAnswer = currentQuestion.answer;
+
+    if (isUserAnswerCorrect) {
+      showAlert(`✅ ${chamber} is correct!`, "primary", 1500);
+    } else {
+      showAlert(
+        `❌ the correct answer is ${currentQuestion.answer}`,
+        "danger",
+        1500
+      );
+    }
 
     writeHistory(isUserAnswerCorrect, historyId, userAnswer);
     showNextQuestion(isUserAnswerCorrect);
