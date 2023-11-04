@@ -1,0 +1,20 @@
+.image {
+  position: absolute;
+  display: inline;
+  z-index: 99;
+  animation: fade-in 0.25s ease-in;
+  opacity: 1;
+}
+
+.image-hide {
+  display: none;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

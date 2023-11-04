@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Blurhash } from "react-blurhash";
 import { BlurhasImageProps } from "../../../types/proptypes/BlurhasImageProps";
 import "../../styles/css/difficulty-modifiers.css";
+import "../../styles/css/blurhash.css";
 
 const BlurhashImage = ({
   bhSrc,
@@ -40,21 +41,22 @@ const BlurhashImage = ({
     );
   }
 
-  return isImageLoaded ? (
-    <img
-      src={bhSrc}
-      alt={bhAlt}
-      width={bhWidth}
-      height={bhHeight}
-      className={className}
-    />
-  ) : (
-    <Blurhash
-      hash={bhHash}
-      width={bhWidth}
-      height={bhHeight}
-      className={className}
-    />
+  return (
+    <div>
+      <img
+        src={bhSrc}
+        alt={bhAlt}
+        width={bhWidth}
+        height={bhHeight}
+        className={`${className} ${isImageLoaded ? "image" : "image-hide"}`}
+      />
+      <Blurhash
+        hash={bhHash}
+        width={bhWidth}
+        height={bhHeight}
+        className={className}
+      />
+    </div>
   );
 };
 
