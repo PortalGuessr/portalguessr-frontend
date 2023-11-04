@@ -24,7 +24,7 @@ export type PortalChamberNumber =
   | "18"
   | "19"
   | "e00"
-  | "e02"
+  | "e01"
   | "e02"
   | null;
 

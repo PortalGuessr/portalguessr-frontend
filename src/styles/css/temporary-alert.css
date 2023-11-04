@@ -6,7 +6,7 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  z-index: 99;
+  z-index: 1000;
   transform: translateY(16px);
   animation: alert-slide 0.5s;
 }
