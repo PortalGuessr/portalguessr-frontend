@@ -14,9 +14,6 @@ export function useGameStates() {
   const [currentQuestion, setCurrentQuestion] = useState({} as GuessrQuestion);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
-  // Flag for data fetching.
-  const [isFetchingData, setIsFetchingData] = useState(false);
-
   // Several flags for the game's state.
   const [isGameRunning, setIsGameRunning] = useState(false);
   const [isGameFinished, setIsGameFinished] = useState(false);
@@ -41,7 +38,6 @@ export function useGameStates() {
     isCounterFinished,
     hasCounterInitialized,
     isGameFinishedBeforeTimerRunOut,
-    isFetchingData,
     alert,
     resetCounter,
     setQuestions,
@@ -51,7 +47,6 @@ export function useGameStates() {
     setIsGameRunning,
     setIsGameFinished,
     setIsGameFinishedBeforeTimerRunOut,
-    setIsFetchingData,
     setAlert,
   };
 

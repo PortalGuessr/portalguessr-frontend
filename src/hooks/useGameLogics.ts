@@ -59,7 +59,7 @@ export function useGameLogics({
   function handleAnswer(chamber: PortalChamberNumber) {
     if (imageCooldown) {
       showAlert(
-        "Still loading image! You can't answer before the image load.",
+        "Image is still loading! You can't answer before the image load.",
         "danger",
         2000
       );

@@ -53,7 +53,6 @@ const App = () => {
     isGameFinishedBeforeTimerRunOut,
     isGameRunning,
     questions,
-    isFetchingData,
     alert,
     resetCounter,
     setCurrentQuestion,
@@ -63,7 +62,6 @@ const App = () => {
     setIsGameFinishedBeforeTimerRunOut,
     setIsGameRunning,
     setQuestions,
-    setIsFetchingData,
     setAlert,
   } = useGameStates();
 
@@ -103,7 +101,6 @@ const App = () => {
                     questions,
                     isGameFinished,
                     isGameRunning,
-                    isFetchingData,
                     resetCounter,
                     setCurrentQuestion,
                     setCurrentQuestionIndex,
@@ -112,7 +109,6 @@ const App = () => {
                     setQuestions,
                     setHistory,
                     handleAnswer,
-                    setIsFetchingData,
                   }}
                 >
                   <Game />

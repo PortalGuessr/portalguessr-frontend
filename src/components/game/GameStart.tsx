@@ -10,21 +10,27 @@ const PORTALGUESSR_API_ENDPOINT =
   "https://portalguessr-api.cyclic.app/chambers/random";
 
 const GameStart = () => {
-  const {
-    setCurrentQuestion,
-    setQuestions,
-    resetCounter,
-    setIsGameRunning,
-    setIsFetchingData,
-  } = useContext(GuessrContext);
+  const { setCurrentQuestion, setQuestions, resetCounter, setIsGameRunning } =
+    useContext(GuessrContext);
 
   const { showAlert } = useContext(AlertContext);
+
+  let isFetching = false;
 
   function handleGameStart(
     difficulty: GuessrDifficulty,
     timeoutSeconds: number,
     amount: number
   ) {
+    if (isFetching) {
+      console.warn(
+        "WARNING: Still fetching data from server, can't start another instance of game."
+      );
+      return;
+    }
+
+    isFetching = true;
+
     const difficultyAbbreviate = convertToAbbreviate(difficulty);
     const endpoint = `${PORTALGUESSR_API_ENDPOINT}/${
       amount + (difficultyAbbreviate !== null ? `/${difficultyAbbreviate}` : "")
@@ -39,10 +45,11 @@ const GameStart = () => {
         setQuestions(questions);
         setCurrentQuestion(questions[0]);
         resetCounter(timeoutSeconds);
-        setIsFetchingData(false);
         setIsGameRunning(true);
       } catch (error) {
         showAlert(`An error occurred: ${error}`, "danger", 2000);
+      } finally {
+        isFetching = false;
       }
     }
 
