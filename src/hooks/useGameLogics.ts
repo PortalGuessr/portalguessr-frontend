@@ -8,6 +8,8 @@ export function useGameLogics({
   currentQuestion,
   currentQuestionIndex,
   history,
+  isGameFinished,
+  isGameFinishedBeforeTimerRunOut,
   hasCounterInitialized,
   setCurrentQuestion,
   setCurrentQuestionIndex,
@@ -25,11 +27,18 @@ export function useGameLogics({
     }
   }, [isCounterFinished]);
 
+  useEffect(() => {
+    if (isGameFinished) {
+      saveGameResult(isGameFinishedBeforeTimerRunOut);
+    }
+  }, [isGameFinished]);
+
   const imageSrc = currentQuestion.url;
 
   useEffect(() => {
     // Check whether the blur modifier is active or not.
     // If it does active, we don't need to wait for the image to load.
+
     const { blur } = JSON.parse(
       localStorage.getItem("MODIFIERS") ||
         '{ "blur": false, "rotate": false, "grayscale": false }'
@@ -50,7 +59,6 @@ export function useGameLogics({
 
   function handleCounterFinished() {
     // Triggered when the counter reaches 0 AND the counter has been initialized.
-    saveGameResult(false);
     setIsGameFinishedBeforeTimerRunOut(false);
     setIsGameFinished(true);
     resetCounter(0);
@@ -76,15 +84,14 @@ export function useGameLogics({
       showAlert(`✅ ${chamber} is correct!`, "primary", 1500);
     } else {
       showAlert(
-        `❌ the correct answer is ${currentQuestion.answer}`,
+        `❌ the correct answer was ${currentQuestion.answer}`,
         "danger",
         1500
       );
     }
 
     writeHistory(isUserAnswerCorrect, historyId, userAnswer);
-    showNextQuestion(isUserAnswerCorrect);
-
+    showNextQuestion();
     setImageCooldown(true);
   }
 
@@ -103,10 +110,10 @@ export function useGameLogics({
     setHistory([...history, newHistoryEntry]);
   }
 
-  function showNextQuestion(isUserAnswerCorrect: boolean) {
+  function showNextQuestion() {
     // Showing next question.
     if (currentQuestionIndex === questions.length - 1) {
-      handleGameFinished(isUserAnswerCorrect);
+      handleGameFinished();
     } else {
       const nextIndex = currentQuestionIndex + 1;
       setCurrentQuestionIndex(nextIndex);
@@ -114,9 +121,8 @@ export function useGameLogics({
     }
   }
 
-  function handleGameFinished(isUserAnswerCorrect: boolean) {
+  function handleGameFinished() {
     // Triggered when the game has run out of questions.
-    saveGameResult(isUserAnswerCorrect);
     setIsGameFinishedBeforeTimerRunOut(true);
     setIsGameFinished(true);
     resetCounter(0);

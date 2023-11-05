@@ -5,8 +5,10 @@ export interface GameLogicsHookParam {
   history: GuessrHistory[];
   currentQuestion: GuessrQuestion;
   currentQuestionIndex: number;
+  isGameFinished: boolean;
   isCounterFinished: boolean;
   hasCounterInitialized: boolean;
+  isGameFinishedBeforeTimerRunOut: boolean;
   setCurrentQuestion: React.Dispatch<React.SetStateAction<GuessrQuestion>>;
   setCurrentQuestionIndex: React.Dispatch<React.SetStateAction<number>>;
   setHistory: React.Dispatch<React.SetStateAction<GuessrHistory[]>>;
