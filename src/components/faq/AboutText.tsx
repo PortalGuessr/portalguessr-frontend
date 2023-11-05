@@ -12,11 +12,10 @@ const AboutText = () => {
       <div>
         <h5>🎮 How To Play?</h5>
         <p>
-          There are 10 rounds in a game.
+          There are 10 rounds in a single game.
           <br />
           <br />
-          You have to guess with selecting the chamber in the answer selection
-          dropdown.
+          You have to guess with entering a valid chamber number.
           <br />
           <br />
           Try to finish the game before the timer runs out.
@@ -28,11 +27,11 @@ const AboutText = () => {
       </div>
       <hr />
       <div>
-        Much of the design of this website is inspired by{" "}
+        The design of this website is inspired by{" "}
         <a target="_blank" href="https://worldle.teuteuf.fr/">
           Worldle
         </a>
-        , they've done a great job of creating a mobile first UI that works.
+        , be sure to check them out!
       </div>
       <hr />
       <div>
