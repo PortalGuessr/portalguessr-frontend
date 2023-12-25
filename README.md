@@ -30,4 +30,4 @@ The official trello workspace for this project: <https://trello.com/b/NgVubCDX/p
 
 ## Discord Server
 
-Join the Discord server to get the latest news about PortalGuessr: https://discord.gg/djWRTEM8XZ
+Join the Discord server to get the latest news about PortalGuessr: https://discord.gg/dDbgtFb2KC
