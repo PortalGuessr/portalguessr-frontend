@@ -17,7 +17,7 @@ const MainFooter = () => {
           <a
             className="text-decoration-none"
             target="_blank"
-            href="https://discord.gg/djWRTEM8XZ"
+            href="https://discord.gg/dDbgtFb2KC"
             style={{ color: "	#7289DA" }}
           >
             Discord Server <i className="bi bi-discord"></i>

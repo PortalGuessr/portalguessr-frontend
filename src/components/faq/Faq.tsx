@@ -41,8 +41,8 @@ const Faq = () => {
             Can I submit more images to PortalGuessr?
           </h6>
           <span className="text-pg-light">
-            Yes, join the Discord server then navigate to{" "}
-            <i>#image-submissions</i> for submitting images.
+            Yes, join the Discord server then navigate to <i>#submissions</i>{" "}
+            for submitting images.
           </span>
         </li>
       </ul>
