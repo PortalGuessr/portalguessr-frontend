@@ -4,7 +4,7 @@ const BottomFooter = () => {
       <i className="bi bi-heart-fill text-pg-danger"></i> PortalGuessr?{" "}
       <a
         target="_blank"
-        href="https://github.com/XnonXte/PortalGuessr"
+        href="https://github.com/XnonXte/PortalGuessr-Bot-2"
         className="link link-pg-primary"
       >
         Try PG Discord Bot 🤖
